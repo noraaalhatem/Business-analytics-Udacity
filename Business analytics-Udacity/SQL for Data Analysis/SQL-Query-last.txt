@@ -1,0 +1,93 @@
+
+
+/*Query1*/
+
+SELECT Artist.Name ,count (Album.ArtistId)   "Number of Albums"
+
+from Album
+
+JOIN Artist on Album.ArtistId=Artist.ArtistId
+
+GROUP by Artist.Name
+
+ORDER by "Number of Albums" DESC
+
+LIMIT 8 ;
+
+
+
+
+
+
+
+
+
+/*Query2*/
+
+SELECT Customer.FirstName ,sum (Invoice.total) as total
+
+from Invoice
+
+JOIN Customer on Invoice.CustomerId=Customer.CustomerId
+
+GROUP by Customer.CustomerId
+
+ORDER by total
+
+DESC
+
+LIMIT 8 ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Query3*/
+
+SELECT (Employee.FirstName||" "||Employee.LastName)as EmployeeName, Employee.Email, Employee.City ,count (Customer.CustomerId) as "Number of Customers"
+
+from Customer
+
+JOIN Employee on Customer.SupportRepId=Employee.EmployeeId
+
+GROUP by EmployeeName
+
+ORDER by "Number of Customers"  DESC
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Query4*/
+
+SELECT Genre.Name , Count (*) as "Number of Music"
+
+FROM Genre
+
+JOIN Track
+
+on Track.GenreId = Genre.GenreId
+
+GROUP by Genre.GenreId , Genre.Name
+
+ORDER by 2 DESC
+
+ limit 8;
